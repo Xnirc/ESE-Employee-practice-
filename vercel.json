@@ -1,0 +1,6 @@
+{
+  "buildCommand": "echo 'Static HTML Deployment'",
+  "outputDirectory": ".",
+  "framework": null,
+  "cleanUrls": true
+}

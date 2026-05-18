@@ -4,7 +4,8 @@ A full-stack MERN application that analyzes employee performance data and provid
 
 ## 🔗 Repository
 - **GitHub:** [https://github.com/Xnirc/ESE-Employee-practice-](https://github.com/Xnirc/ESE-Employee-practice-)
-
+- ## Backend - https://ese-employee-practice-1.onrender.com
+- ## frontend- https://employee-frontend-k1yv.onrender.com/login
 ---
 
 ## ✨ Features

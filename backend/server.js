@@ -18,6 +18,10 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
+app.get('/', (req, res) => {
+  res.json({ message: "backend run properly" });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/ai', aiRoutes);

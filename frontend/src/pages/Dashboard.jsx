@@ -10,9 +10,10 @@ const Dashboard = () => {
   const fetchEmployees = async (query = '') => {
     try {
       const token = localStorage.getItem('token');
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const url = query 
-        ? `http://localhost:5000/api/employees/search?department=${query}`
-        : 'http://localhost:5000/api/employees';
+        ? `${API_URL}/api/employees/search?department=${query}`
+        : `${API_URL}/api/employees`;
       
       const res = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` }
@@ -38,7 +39,8 @@ const Dashboard = () => {
     if (!window.confirm('Are you sure you want to delete this employee?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/employees/${id}`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      await axios.delete(`${API_URL}/api/employees/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchEmployees(search);

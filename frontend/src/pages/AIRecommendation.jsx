@@ -14,7 +14,8 @@ const AIRecommendation = () => {
     const fetchEmployees = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/employees', {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await axios.get(`${API_URL}/api/employees`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setEmployees(res.data);
@@ -34,7 +35,8 @@ const AIRecommendation = () => {
       const token = localStorage.getItem('token');
       const payload = selectedEmployee ? { employeeId: selectedEmployee } : {};
       
-      const res = await axios.post('http://localhost:5000/api/ai/recommend', payload, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await axios.post(`${API_URL}/api/ai/recommend`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

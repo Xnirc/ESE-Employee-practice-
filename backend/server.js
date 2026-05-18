@@ -12,11 +12,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
+const connectDB = async () => {
+  try {
+    const uri = process.env.MONGO_URI;
+    if (!uri) throw new Error("No MONGO_URI");
+    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log('MongoDB Atlas Connected');
+  } catch (err) {
+    console.log('Atlas connection failed. Starting In-Memory MongoDB for fast testing...');
+    const mongoServer = await MongoMemoryServer.create();
+    const mockUri = mongoServer.getUri();
+    await mongoose.connect(mockUri, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log('In-Memory MongoDB Connected Successfully!');
+  }
+};
+
+connectDB();
 
 app.get('/', (req, res) => {
   res.json({ message: "backend run properly" });

@@ -1,51 +1,55 @@
-# 🎓 CampusConnect - Student Grievance Management System
+# 🚀 AI-Based Employee Performance Analytics & Recommendation System
 
-A full-stack, transparent, and efficient web application designed for students to easily report and track academic, hostel, and transport-related issues. Built with the MERN stack (MongoDB, Express, Vanilla JS, Node.js).
+A full-stack MERN application that analyzes employee performance data and provides AI-powered recommendations using OpenRouter (OpenAI-compatible) API. Developed as part of the B.Tech 4th SEMESTER ESE EXAMINATION (AI Driven Full Stack Development - AI308B).
 
-## 🚀 Live Demo
-- **Frontend (Vercel):** [https://mse-2-student-gravience-form-2gkt.vercel.app/](https://mse-2-student-gravience-form-2gkt.vercel.app/)
-- **Backend API (Render):** [https://mse2-student-gravience-form.onrender.com/](https://mse2-student-gravience-form.onrender.com/)
+## 🔗 Repository
+- **GitHub:** [https://github.com/Xnirc/ESE-Employee-practice-](https://github.com/Xnirc/ESE-Employee-practice-)
 
 ---
 
 ## ✨ Features
-### Frontend (UI/UX)
-- **Glassmorphism Design:** Modern, premium aesthetic with smooth UI/UX.
-- **Authentication:** Secure Registration and Login portal.
-- **Dashboard:** Protected route only accessible to logged-in students.
-- **Dynamic Interactions:** Loading spinners, fade-in animations, and toast notifications.
-- **Search:** Real-time search functionality for complaints.
-- **Full CRUD:** Create, Read, Update (Edit), and Delete grievances.
 
-### Backend (API)
-- **Node.js & Express:** RESTful architecture.
-- **MongoDB & Mongoose:** Structured data schemas for Students and Grievances.
-- **JWT Authentication:** Secure API endpoints protecting user data.
-- **Bcrypt:** Password hashing and secure storage.
+### Frontend (React & Vite)
+- **Premium UI:** Glassmorphism design, vibrant color palettes, and modern aesthetics using Vanilla CSS.
+- **Authentication:** Secure Registration and Login portal.
+- **Dashboard:** Protected route displaying a directory of employees.
+- **Search & Filter:** Find employees by department instantly.
+- **Employee Management:** Add new employees to the database.
+- **AI Analytics Page:** Generate comprehensive AI reports, feedback, and rankings for employees.
+
+### Backend (Node.js & Express)
+- **RESTful API Architecture:** Clean separation of Routes, Controllers, and Models.
+- **MongoDB & Mongoose:** Structured data schemas for Employees and Users.
+- **JWT Authentication:** Secure API endpoints, protecting user data via Bearer tokens.
+- **Bcrypt Security:** Password hashing for secure database storage.
+- **AI Integration:** Communication with OpenRouter API for intelligent performance analytics.
 
 ---
 
 ## 🛠️ Technology Stack
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript, FontAwesome
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB Atlas
-- **Security:** jsonwebtoken (JWT), bcryptjs
-- **Deployment:** Vercel (Frontend), Render (Backend)
+- **Frontend:** React, Vite, CSS3 (Glassmorphism), Axios, Lucide React (Icons).
+- **Backend:** Node.js, Express.js.
+- **Database:** MongoDB Atlas.
+- **Security:** JSON Web Tokens (JWT), bcryptjs.
+- **AI Integration:** OpenRouter API (OpenAI models).
 
 ---
 
 ## 🔌 API Endpoints Reference
 
 ### Auth Routes
-- `POST /api/register` - Register a new student
-- `POST /api/login` - Authenticate student and get JWT token
+- `POST /api/auth/register` - Register a new admin user
+- `POST /api/auth/login` - Authenticate and receive JWT token
 
-### Grievance Routes (Requires JWT Token)
-- `POST /api/grievances` - Submit a new grievance
-- `GET /api/grievances` - Fetch all grievances for the logged-in student
-- `GET /api/grievances/search?title=...` - Search grievances by title
-- `PUT /api/grievances/:id` - Update a specific grievance
-- `DELETE /api/grievances/:id` - Delete a specific grievance
+### Employee Routes (Protected by JWT)
+- `POST /api/employees` - Add a new employee
+- `GET /api/employees` - Fetch all employees
+- `GET /api/employees/search?department=...` - Search employees by department
+- `PUT /api/employees/:id` - Update employee
+- `DELETE /api/employees/:id` - Remove employee
+
+### AI Routes (Protected by JWT)
+- `POST /api/ai/recommend` - Generate AI recommendations (Expects `employeeId` in body, or returns ranking if empty)
 
 ---
 
@@ -53,30 +57,40 @@ A full-stack, transparent, and efficient web application designed for students t
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Xnirc/MSE2_student_gravience_form.git
-   cd MSE2_student_gravience_form
+   git clone https://github.com/Xnirc/ESE-Employee-practice-.git
+   cd ESE-Employee-practice-
    ```
 
-2. **Install dependencies:**
+2. **Backend Setup:**
    ```bash
+   cd backend
    npm install
    ```
-
-3. **Environment Variables:**
-   Create a `.env` file in the root directory and add the following:
+   Create a `.env` file in the `backend` directory:
    ```env
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
    PORT=5000
+   MONGO_URI=your_mongodb_uri
+   JWT_SECRET=your_secret_key
+   OPENROUTER_API_KEY=your_openrouter_api_key
    ```
-
-4. **Run the server:**
+   Start the backend:
    ```bash
-   node index.js
+   npm start
    ```
 
-5. **Test the app:**
-   Open `http://localhost:5000` in your browser. (The backend will serve the frontend automatically during local development).
+3. **Frontend Setup:**
+   Open a new terminal.
+   ```bash
+   cd frontend
+   npm install
+   ```
+   Start the frontend:
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the App:**
+   Open `http://localhost:5173` (or the port Vite provides) in your browser.
 
 ---
-*Developed for College MSE-2 Submission.*
+*Developed for ESE Examination AI308B Submission.*
